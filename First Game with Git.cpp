@@ -2,12 +2,15 @@
 //
 
 #include "SDL.h"
-//#include "pch.h"
-//#include <iostream>
+#include "pch.h"
+#include <iostream>
 
-//using std::cout;
 
-int main(int argc, char *gargv[])
+using namespace std;
+using std::cout;
+
+
+int main(int argc, char *argv[])
 {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
