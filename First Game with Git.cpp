@@ -1,18 +1,32 @@
 // First Game with Git.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "pch.h"
-#include <iostream>
+#include "SDL.h"
+//#include "pch.h"
+//#include <iostream>
 
-using std::cout;
+//using std::cout;
 
-int main()
+int main(int argc, char *gargv[])
 {
-	// PC TEST
-    cout << "Hello World!\n"; 
 
+	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
+	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+
+	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+
+	SDL_RenderClear(renderer);
+
+	SDL_RenderPresent(renderer);
+
+	SDL_Delay(3000);
+
+	// PC TEST
+    //cout << "Hello World!\n"; 
 
 	// LAPTOP TEST
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
