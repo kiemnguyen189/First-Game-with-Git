@@ -10,9 +10,7 @@
 #define PCH_H
 
 #include <SDL.h>
-
-#pragma comment(lib, "SDL2.lib")
-#pragma comment(lib, "SDL2main.lib")
+#include <SDL_surface.h>
 
 // TODO: add headers that you want to pre-compile here
 

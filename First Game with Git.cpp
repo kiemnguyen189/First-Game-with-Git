@@ -1,7 +1,6 @@
 // First Game with Git.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "SDL.h"
 #include "pch.h"
 #include <iostream>
 
@@ -18,12 +17,15 @@ int main(int argc, char *argv[])
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 
 	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-
 	SDL_RenderClear(renderer);
-
 	SDL_RenderPresent(renderer);
-
 	SDL_Delay(3000);
+
+	SDL_Surface *temp = SDL_LoadBMP("Base character.bmp");
+	//SDL_Renderer *sprite = SDL_
+
+
+
 
 	// PC TEST
     //cout << "Hello World!\n"; 
