@@ -13,19 +13,28 @@ int main(int argc, char *argv[])
 {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+	SDL_Window *sdlWindow;// = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, SDL_WINDOW_SHOWN);
+	SDL_Renderer *sdlRenderer;// = SDL_CreateRenderer(sdlWindow, -1, 0);
+	SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, &sdlWindow, &sdlRenderer);
 
-	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-	SDL_Delay(3000);
+	SDL_SetRenderDrawColor(sdlRenderer, 0, 255, 0, 255);
+	SDL_RenderClear(sdlRenderer);
+	SDL_RenderPresent(sdlRenderer);
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+	SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
 
-	SDL_Surface *temp = SDL_LoadBMP("Base character.bmp");
-	//SDL_Renderer *sprite = SDL_
+	SDL_Texture *sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, 640, 480);
 
+	SDL_Surface *image = SDL_LoadBMP("640 x 480 grid32.bmp");
+	extern Uint32 *myPixels;
 
+	SDL_UpdateTexture(sdlTexture, NULL, myPixels, 640 * sizeof(Uint32));
 
+	SDL_RenderClear(sdlRenderer);
+	SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
+	SDL_RenderPresent(sdlRenderer);
+
+	SDL_Delay(2000);
 
 	// PC TEST
     //cout << "Hello World!\n"; 
