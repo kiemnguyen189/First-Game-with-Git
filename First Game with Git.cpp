@@ -1,7 +1,6 @@
 // First Game with Git.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "SDL.h"
 #include "pch.h"
 #include <iostream>
 
