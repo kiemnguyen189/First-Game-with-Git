@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
 	SDL_Texture *sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, 640, 480);
 
 	SDL_Surface *image = SDL_LoadBMP("640 x 480 grid32.bmp");
-	extern Uint32 *myPixels;
+	//extern Uint32 &image;
 
-	SDL_UpdateTexture(sdlTexture, NULL, myPixels, 640 * sizeof(Uint32));
+	SDL_UpdateTexture(sdlTexture, NULL, image, 640 * sizeof(Uint32));
 
 	SDL_RenderClear(sdlRenderer);
 	SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
