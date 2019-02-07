@@ -23,12 +23,15 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="First Game with Git.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Documents\Sideman Studios\Test Game\Characters\Base character.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Documents\Sideman Studios\Test Game\Characters\640 x 480 grid32.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
