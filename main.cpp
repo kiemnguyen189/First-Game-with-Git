@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
+#include "main.h"
 
 using namespace std;
 using std::cout;
@@ -33,8 +34,8 @@ int main(int argc, char *argv[])
 
 	SDL_Window *window = nullptr;
 	SDL_Renderer *renderer = nullptr;
-	SDL_Surface *surface = nullptr;
-	SDL_Texture *texture = nullptr;
+	SDL_Surface *surface1 = nullptr;
+	SDL_Texture *texture1 = nullptr;
 	SDL_Event event;
 
 	SDL_Rect srcRect;
@@ -61,20 +62,22 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	surface = SDL_LoadBMP("640 x 480 grid32.bmp");
-	if (!surface) {
+	surface1 = SDL_LoadBMP("640 x 480 grid32.bmp");
+	if (!surface1) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create surface from image: %s", SDL_GetError());
 		return 1;
 	}
 
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-	if (!texture) {
+	texture1 = SDL_CreateTextureFromSurface(renderer, surface1);
+	if (!texture1) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create texture from surface: %s", SDL_GetError());
 		return 1;
 	}
 
-	SDL_FreeSurface(surface);
-	surface = nullptr;
+	SDL_FreeSurface(surface1);
+	surface1 = nullptr;
+
+
 
 	while (!quit) {
 		while (SDL_PollEvent(&event) != 0) {
@@ -82,25 +85,44 @@ int main(int argc, char *argv[])
 				quit = true;
 			}
 			if (event.type == SDL_KEYDOWN) {
+
+				/*
 				if (event.key.keysym.sym == SDLK_SPACE) {
 					cout << "SPACE" << endl;
 				}
-				else {
+				if (event.key.keysym.sym == SDLK_UP) {
+					cout << "UP" << endl;
+				}
+				if (event.key.keysym.sym == SDLK_DOWN) {
 					cout << "DOWN" << endl;
 				}
-				
+				if (event.key.keysym.sym == SDLK_LEFT) {
+					cout << "LEFT" << endl;
+				}
+				if (event.key.keysym.sym == SDLK_RIGHT) {
+					cout << "RIGHT" << endl;
+				}
+				*/
+				switch (event.key.keysym.sym) {
+					case(SDLK_SPACE): cout << "SPACE" << endl;
+					case(SDLK_UP): cout << "UP" << endl;
+					case(SDLK_DOWN): cout << "DOWN" << endl;
+					case(SDLK_LEFT): cout << "LEFT" << endl;
+					case(SDLK_RIGHT): cout << "RIGHT" << endl;
+				}
+
 			}
 			//gKeyPress[ KEY_PRESS_SURFACE_DOWN ] = loadSurface( "Base character.bmp" );
 
 			//SDL_SetRenderDrawColor(renderer, 0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
 			SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 			SDL_RenderClear(renderer);
-			SDL_RenderCopy(renderer, texture, NULL, &dimensionRect);
+			SDL_RenderCopy(renderer, texture1, NULL, &dimensionRect);
 			SDL_RenderPresent(renderer);
 		}
 	}
 
-	SDL_DestroyTexture(texture);
+	SDL_DestroyTexture(texture1);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 
